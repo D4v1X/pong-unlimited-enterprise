@@ -5,11 +5,11 @@
 *.war
 *.ear
 /nbproject/private/
-/PongUnlimitedEnterprise-war/nbproject/private/
 /PongUnlimitedEnterprise-ejb/nbproject/private/
-/PongUnlimitedEnterprise-ejb/build/
-/PongUnlimitedEnterprise-ejb/dist/
-/PongUnlimitedEnterprise-war/build/
-/build/
-/PongUnlimitedEnterprise-war/dist/
+/PongUnlimitedEnterprise-war/nbproject/private/
 /dist/
+/build/
+/PongUnlimitedEnterprise-war/build/
+/PongUnlimitedEnterprise-war/dist/
+/PongUnlimitedEnterprise-ejb/dist/
+/PongUnlimitedEnterprise-ejb/build/
