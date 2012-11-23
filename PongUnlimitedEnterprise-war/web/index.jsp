@@ -9,9 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>PONG Unlimited</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+    <body style="background-color: black">
+        <!<img src="w3schools.jpg" width="104" height="142">>
+        <h1 style="text-align: center;color: white">PONG Unlimited</h1>
+        <p style="text-align: center;color: white">You will never play the same level twice</p>
+        <p style="text-align: center">
+    <applet 
+        code="PU.Principal" 
+        archive="PongUnlimitedCliente.jar, Entity.jar, Connection.jar" 
+        width="600" height="500"
+        />
+</p>
+</body>
 </html>
