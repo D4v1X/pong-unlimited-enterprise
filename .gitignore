@@ -4,3 +4,6 @@
 *.jar
 *.war
 *.ear
+/nbproject/private/
+/PongUnlimitedEnterprise-ejb/nbproject/private/
+/PongUnlimitedEnterprise-war/nbproject/private/
