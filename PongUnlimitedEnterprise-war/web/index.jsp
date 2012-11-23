@@ -18,7 +18,7 @@
         <p style="text-align: center">
     <applet 
         code="PU.Principal" 
-        archive="PongUnlimitedCliente.jar, Entity.jar, Connection.jar" 
+        archive="PongUnlimitedCliente.jar, LibraryEntities.jar, LibraryConnection.jar" 
         width="600" height="500"
         />
 </p>
