@@ -4,9 +4,17 @@
         <servlet-name>SceneServlet</servlet-name>
         <servlet-class>servlets.SceneServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ScoreServlet</servlet-name>
+        <servlet-class>servlets.ScoreServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SceneServlet</servlet-name>
         <url-pattern>/SceneServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ScoreServlet</servlet-name>
+        <url-pattern>/ScoreServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
