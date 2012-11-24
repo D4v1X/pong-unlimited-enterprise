@@ -23,7 +23,7 @@ public class BDSaver implements SceneSaver {
 
     // Database
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private String DB_URL = "jdbc:mysql://localhost/pelotas";
+    private String DB_URL = "jdbc:mysql://localhost/PongUnlimited";
     // Database credentials
     private String USER = "root";
     private String PASS = "";
