@@ -10,12 +10,12 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import javax.ejb.EJB;
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import nodrawable.Ranking;
 import nodrawable.Score;
 
@@ -23,6 +23,7 @@ import nodrawable.Score;
  *
  * @author davidsantiagobarrera
  */
+@EJB(name = "ScoreBean", beanInterface = ScoreBeanLocal.class)
 public class ScoreServlet extends HttpServlet {
 
     /**

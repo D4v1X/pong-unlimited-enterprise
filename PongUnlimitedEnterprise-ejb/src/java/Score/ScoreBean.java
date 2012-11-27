@@ -15,13 +15,13 @@ import nodrawable.Score;
 @Stateless
 public class ScoreBean implements ScoreBeanRemote, ScoreBeanLocal {
 
+    ScoreManager scoreManager = new DBScore();
+
     @Override
     public Ranking saveScore(Score score) {
-        return null;
+        scoreManager.saveScore(score);
+        return scoreManager.loadRanking();
     }
-    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
-    
 }

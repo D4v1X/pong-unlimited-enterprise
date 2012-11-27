@@ -36,7 +36,7 @@ public class DBScore implements ScoreManager {
         ResultSet resultset;
         String sql;
         ObjectInputStream objectIn = null;
-        Score obj = null;
+        
         Ranking ranking = new Ranking();
         try {
             // Register JDBC driver
@@ -48,16 +48,15 @@ public class DBScore implements ScoreManager {
             // Execute SQL query
             statement = connection.createStatement();
 
-            sql = "Select * from ranking";
+            sql = "SELECT * FROM ranking ORDER BY time DESC";
             resultset = statement.executeQuery(sql);
 
             // Extract data from result set
             while (resultset.next()) {
-                byte[] buf = resultset.getBytes("objeto");
-                if (buf != null) {
-                    objectIn = new ObjectInputStream(new ByteArrayInputStream(buf));
-                }
-                obj = (Score) objectIn.readObject();
+                Score obj = new Score();
+                obj.setId(resultset.getString("name"));
+                obj.setTime(resultset.getDouble("time"));
+                obj.setModo(resultset.getString("modo"));
                 ranking.setScores(obj);
                 System.out.println(obj);
             }
@@ -67,11 +66,9 @@ public class DBScore implements ScoreManager {
             statement.close();
             connection.close();
         } catch (SQLException e) {
+            e.getSQLState();
         } catch (ClassNotFoundException e) {
             System.out.println("Driver no encontrado");
-            System.out.println(e.getMessage());
-        } catch (IOException e) {
-            System.out.println("Error Exception");
             System.out.println(e.getMessage());
         }
         return ranking;
@@ -91,9 +88,11 @@ public class DBScore implements ScoreManager {
 
             // Execute SQL query
             System.out.println(scoresave);
-            sql = "INSERT into ranking (objeto) VALUES (?)";
+            sql = "INSERT into ranking (name,time,modo) VALUES (?,?,?)";
             ps = connection.prepareStatement(sql);
-            ps.setObject(1, scoresave);
+            ps.setString(1, scoresave.getId());
+            ps.setDouble(2, scoresave.getTime());
+            ps.setString(3, scoresave.getModo());
             ps.executeUpdate();
 
             System.out.println(scoresave);
