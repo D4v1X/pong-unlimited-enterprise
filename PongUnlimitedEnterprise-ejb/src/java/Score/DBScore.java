@@ -4,8 +4,6 @@
  */
 package Score;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,7 +34,7 @@ public class DBScore implements ScoreManager {
         ResultSet resultset;
         String sql;
         ObjectInputStream objectIn = null;
-        
+
         Ranking ranking = new Ranking();
         try {
             // Register JDBC driver
@@ -88,12 +86,34 @@ public class DBScore implements ScoreManager {
 
             // Execute SQL query
             System.out.println(scoresave);
-            sql = "INSERT into ranking (name,time,modo) VALUES (?,?,?)";
+            //------
+            sql = "UPDATE ranking set time = ? WHERE name = ? AND time < ? AND modo = ?";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, scoresave.getId());
-            ps.setDouble(2, scoresave.getTime());
-            ps.setString(3, scoresave.getModo());
-            ps.executeUpdate();
+            ps.setDouble(1, scoresave.getTime());
+            ps.setString(2, scoresave.getId());
+            ps.setDouble(3, scoresave.getTime());
+            ps.setString(4, scoresave.getModo());
+            if (0 == ps.executeUpdate()) {
+                sql = "UPDATE ranking set name = ? WHERE name = ?";
+                ps = connection.prepareStatement(sql);
+                ps.setString(1, scoresave.getId());
+                ps.setString(2, scoresave.getId());
+                if (0 == ps.executeUpdate()) {
+                    sql = "INSERT into ranking (name,time,modo) VALUES (?,?,?)";
+                    ps = connection.prepareStatement(sql);
+                    ps.setString(1, scoresave.getId());
+                    ps.setDouble(2, scoresave.getTime());
+                    ps.setString(3, scoresave.getModo());
+                    ps.executeUpdate();
+                }
+            }
+            //------
+//            sql = "INSERT into ranking (name,time,modo) VALUES (?,?,?)";
+//            ps = connection.prepareStatement(sql);
+//            ps.setString(1, scoresave.getId());
+//            ps.setDouble(2, scoresave.getTime());
+//            ps.setString(3, scoresave.getModo());
+//            ps.executeUpdate();
 
             System.out.println(scoresave);
             // Clean-up environment
